@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Train_Detector_Node",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "ip": { "type": "string", "minLength": 7 },
+      "emergency_cars": { "type": "boolean" },
+      "car_counter_north": { "type": "integer", "minimum": 0 },
+      "car_counter_south": { "type": "integer", "minimum": 0 },
+      "car_counter_east": { "type": "integer", "minimum": 0 },
+      "car_counter_west": { "type": "integer", "minimum": 0 },
+      "pedestrian_north": { "type": "boolean" },
+      "pedestrian_south": { "type": "boolean" },
+      "pedestrian_west": { "type": "boolean" },
+      "pedestrian_east": { "type": "boolean" },
+      "train_detection": { "type": "boolean" },
+      "timestamp": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$" }
+    },
+    "required": ["id", "ip", "emergency_cars", "timestamp"]
+  }
+  
