@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "MasterBedroom_Node",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "ip": { "type": "string" },
+      "temperature": { "type": "number", "minimum": 0, "maximum": 50 },
+      "humidity": { "type": "number", "minimum": 0, "maximum": 100 },
+      "bathroom_light_on": { "type": "boolean" },
+      "bed_occupied": { "type": "boolean" },
+      "light_level": { "type": "integer", "minimum": 0, "maximum": 1000 },
+      "timestamp": { "type": "string" },
+      "type": { "type": "string" }
+    },
+    "required": ["id", "ip", "light_level", "timestamp", "type"]
+  }
+  

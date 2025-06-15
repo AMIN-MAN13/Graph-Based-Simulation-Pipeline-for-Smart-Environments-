@@ -1,0 +1,46 @@
+{
+  "nodes": {
+    "Kitchen": {
+      "type": "kitchen",
+      "schema_path": "D:\\New folder (2)\\kitchen_schema.json"
+    },
+    "LivingRoom": {
+      "type": "livingroom",
+      "schema_path": "D:\\New folder (2)\\livingroom_schema.json"
+    },
+    "MasterBedroom": {
+      "type": "masterbedroom",
+      "schema_path": "D:\\New folder (2)\\masterbedroom_schema.json"
+    },
+    "KidsRoom": {
+      "type": "kidsroom",
+      "schema_path": "D:\\New folder (2)\\kidsroom_schema.json"
+    }
+  },
+  "edges": [
+    {
+      "source": "Kitchen",
+      "target": "LivingRoom",
+      "edge_type": "status_update",
+      "data_fields": ["temperature", "gas_leak", "light_level"]
+    },
+    {
+      "source": "LivingRoom",
+      "target": "KidsRoom",
+      "edge_type": "environment_alert",
+      "data_fields": ["light_level", "motion_detected"]
+    },
+    {
+      "source": "MasterBedroom",
+      "target": "LivingRoom",
+      "edge_type": "presence_info",
+      "data_fields": ["bed_occupied", "bathroom_light_on", "light_level"]
+    },
+    {
+      "source": "KidsRoom",
+      "target": "MasterBedroom",
+      "edge_type": "child_alert",
+      "data_fields": ["crying_detected", "light_level"]
+    }
+  ]
+}

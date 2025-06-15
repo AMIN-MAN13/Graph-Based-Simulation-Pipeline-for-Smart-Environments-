@@ -1,0 +1,26 @@
+{
+    "nodes": {
+      "Node1": {
+        "type": "highway",
+        "schema_path": "D:\\New folder (2)\\type1.json"
+      },
+      "Node2": {
+        "type": "train_detector",
+        "schema_path": "D:\\New folder (2)\\type2.json"
+      },
+      "Node3": {
+        "type": "small_crossroad",
+        "schema_path": "D:\\New folder (2)\\type3.json"
+      }
+    },
+    "edges": [
+      { "source": "Node1", "target": "Node2", "type": "emergency", "data_fields": ["emergency_cars"] },  
+      { "source": "Node2", "target": "Node1", "type": "emergency", "data_fields": ["emergency_cars"] },
+  
+      { "source": "Node2", "target": "Node1", "type": "train_alert", "data_fields": ["train_detection"] },
+      { "source": "Node3", "target": "Node2", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node3", "target": "Node1", "type": "CO2", "data_fields": ["CO2"] }
+
+    ]
+  }
+  

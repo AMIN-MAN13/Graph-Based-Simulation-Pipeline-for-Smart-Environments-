@@ -1,0 +1,64 @@
+{
+    "nodes": {
+      "Node1": {
+        "type": "highway",
+        "schema_path": "D:\\New folder (2)\\type1.json"
+      },
+      "Node2": {
+        "type": "highway",
+        "schema_path": "D:\\New folder (2)\\type1.json"
+      },
+      "Node3": {
+        "type": "train_detector",
+        "schema_path": "D:\\New folder (2)\\type2.json"
+      },
+      "Node4": {
+        "type": "train_detector",
+        "schema_path": "D:\\New folder (2)\\type2.json"
+      },
+      "Node5": {
+        "type": "small_crossroad",
+        "schema_path": "D:\\New folder (2)\\type3.json"
+      },
+      "Node6": {
+        "type": "small_crossroad",
+        "schema_path": "D:\\New folder (2)\\type3.json"
+      }
+    },
+    "edges": [
+      { "source": "Node1", "target": "Node2", "type": "emergency", "data_fields": ["emergency_cars"] },
+      { "source": "Node1", "target": "Node3", "type": "emergency", "data_fields": ["emergency_cars"] },
+  
+      { "source": "Node2", "target": "Node1", "type": "emergency", "data_fields": ["emergency_cars"] },
+      { "source": "Node2", "target": "Node4", "type": "emergency", "data_fields": ["emergency_cars"] },
+  
+      { "source": "Node3", "target": "Node1", "type": "train_alert", "data_fields": ["train_detection"] },
+      { "source": "Node3", "target": "Node4", "type": "train_alert", "data_fields": ["train_detection"] },
+      { "source": "Node3", "target": "Node5", "type": "train_alert", "data_fields": ["train_detection"] },
+      { "source": "Node3", "target": "Node1", "type": "emergency", "data_fields": ["emergency_cars"] },
+      { "source": "Node3", "target": "Node4", "type": "emergency", "data_fields": ["emergency_cars"] },
+      { "source": "Node3", "target": "Node5", "type": "emergency", "data_fields": ["emergency_cars"] },
+
+      { "source": "Node4", "target": "Node2", "type": "train_alert", "data_fields": ["train_detection"] },
+      { "source": "Node4", "target": "Node3", "type": "emergency", "data_fields": ["train_detection"] },
+      { "source": "Node4", "target": "Node6", "type": "train_alert", "data_fields": ["train_detection"] },
+      { "source": "Node4", "target": "Node2", "type": "emergency", "data_fields": ["emergency_cars"] },
+      { "source": "Node4", "target": "Node3", "type": "emergency", "data_fields": ["emergency_cars"] },
+      { "source": "Node4", "target": "Node6", "type": "emergency", "data_fields": ["emergency_cars"] },
+
+      { "source": "Node5", "target": "Node1", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node5", "target": "Node2", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node5", "target": "Node3", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node5", "target": "Node4", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node5", "target": "Node6", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node5", "target": "Node6", "type": "emergency", "data_fields": ["emergency_cars"] },
+  
+      { "source": "Node6", "target": "Node1", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node6", "target": "Node2", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node6", "target": "Node3", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node6", "target": "Node4", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node6", "target": "Node5", "type": "CO2", "data_fields": ["CO2"] },
+      { "source": "Node6", "target": "Node5", "type": "emergency", "data_fields": ["emergency_cars"] }
+    ]
+  }
+  

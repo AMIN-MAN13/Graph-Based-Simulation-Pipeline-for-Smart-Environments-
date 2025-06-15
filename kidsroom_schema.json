@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "KidsRoom_Node",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "ip": { "type": "string" },
+      "temperature": { "type": "number", "minimum": 0, "maximum": 50 },
+      "light_level": { "type": "integer", "minimum": 0, "maximum": 1000 },
+      "night_light_on": { "type": "boolean" },
+      "crying_detected": { "type": "boolean" },
+      "timestamp": { "type": "string" },
+      "type": { "type": "string" }
+    },
+    "required": ["id", "ip", "light_level", "timestamp", "type"]
+  }
+  
