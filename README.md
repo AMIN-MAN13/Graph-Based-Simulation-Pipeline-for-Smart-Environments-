@@ -146,6 +146,4 @@ Email: [a.maneshi@uni-rostock.de](mailto:a.maneshi@uni-rostock.de)
 Faculty of Computer Science and Electrical Engineering
 University of Rostock
 
----
 
-> This repository demonstrates a complete and reproducible architecture for modeling, deploying, and validating smart environments using structured configuration, VM-based orchestration, and schema-driven simulation.
