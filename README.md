@@ -1,167 +1,151 @@
-📡 Graph-Based Simulation Pipeline for Smart Environments
-This repository provides the full implementation, configuration, and documentation for the master's thesis:
+# 📈 Graph-Based Simulation Pipeline for Smart Environments
 
-📘 Title: Transforming Graph Models of Smart Environments for Simulation Purposes
-🎓 University: University of Rostock
-👨‍💻 Author: Amin Maneshi
-📅 Submission Date: 26.05.2025
-📄 Thesis PDF: Masterarbeit_Amin_Maneshi.pdf
+This repository contains the full implementation, configurations, and supporting documentation for the Master's thesis:
 
-🔍 Overview
-This project introduces a transformation pipeline that automates the deployment of distributed simulations from graph-based models. It simulates smart environments such as urban traffic networks and smart homes using lightweight Flask services, VirtualBox VMs, and schema-driven data generation.
+**📄 Title:** *Transforming Graph Models of Smart Environments for Simulation Purposes*
+**🏫 University:** University of Rostock
+**👨‍🎓 Author:** Amin Maneshi
+**📅 Submission Date:** 26.05.2025
+**🔗 Thesis PDF:** [`Masterarbeit_Amin_Maneshi.pdf`](./Masterarbeit_Amin_Maneshi.pdf)
 
-The pipeline supports:
+---
 
-JSON-based system modeling
+## 🔍 Project Overview
 
-Automatic schema-driven data generation
+This project introduces a **modular and automated simulation pipeline** that transforms **graph-based models** into **fully functional smart environment simulations**. The system is designed to support smart cities, homes, and IoT-based environments using decentralized architectures.
 
-Directed graph configuration for inter-node communication
+### Key Contributions
 
-VM provisioning using VirtualBox
+* **End-to-end transformation** from abstract graph models to live simulations
+* **Schema-driven data generation** and behavior control using JSON Schema
+* **VM-based node deployment** via VirtualBox and SSH automation
+* **Microservice simulation** using Flask + MariaDB for each node
+* **Dynamic inter-node messaging** through REST APIs
+* **Support for runtime SQL queries** between nodes
 
-REST-based communication via Flask
+---
 
-Node-level local databases using MariaDB
+## 📂 Repository Contents
 
-Real-time SQL query execution between nodes
+```bash
+.
+├── main.py                       # Main orchestration script
+├── Masterarbeit_Amin_Maneshi.pdf  # Final thesis document
+├── network_config.json          # Smart environment topology definition
+├── config2.json                 # Alternative simulation configuration
+├── type1.json / type2.json / type3.json     # Schemas for traffic simulation nodes
+├── kitchen_schema.json / livingroom_schema.json
+├── kidsroom_schema.json / masterbedroom_schema.json  # Schemas for smart home rooms
+├── 12.json / 13.json            # Sample runtime data
+```
 
-🏗️ System Architecture
-The pipeline transforms a high-level graph configuration into a functioning simulation consisting of:
+---
 
-Independently running VMs (1 per node)
+## 🚀 How the System Works
 
-Flask-based APIs simulating sensor behavior
+### ✅ Step-by-Step Pipeline
 
-Inter-node HTTP messaging based on graph edges
+1. **Model the environment** using `network_config.json` and node-specific schemas.
+2. **Run `main.py`** to parse configs and construct the simulation graph.
+3. **Provision VMs**: Each node is launched as a separate VirtualBox VM.
+4. **Deploy Flask services**: Flask APIs run in each VM, serving RESTful endpoints.
+5. **Generate and post sensor data** based on the schemas.
+6. **Establish inter-node communication** using structured JSON messages.
+7. **Issue SQL queries** across the distributed environment for evaluation.
 
-Local MariaDB storage per node
+---
 
-SQL-based behavior validation across the system
+## 🌍 Use Cases & Scenarios
 
-The process is fully automated through Python scripts and configuration files.
+### 1. 🏍️ Urban Traffic Management
 
-📂 Repository Structure
-pgsql
-Copy
-Edit
-├── main.py                         # Main orchestration script
-├── Masterarbeit_Amin_Maneshi.pdf  # Final PDF of the thesis
-├── network_config.json            # Graph topology for simulation
-├── config2.json                   # Alternative simulation configuration
-├── type1.json / type2.json / type3.json
-│                                  # Schemas for traffic simulation node types
-├── kitchen_schema.json
-├── livingroom_schema.json
-├── kidsroom_schema.json
-├── masterbedroom_schema.json     # Schemas for smart home simulation
-├── 12.json / 13.json              # Sample data files used in simulation
-🚀 How It Works
-Define Topology:
+* Node types: Highway, Crossroad, Train Detector
+* Edge logic: Emergency alerts, train signals, CO2 broadcast
+* Goal: Simulate traffic behavior with localized and global coordination
 
-Use network_config.json to define nodes and edges.
+### 2. 🏡 Smart Home Automation
 
-Each node links to a schema file (e.g., kitchen_schema.json) describing its sensor fields.
+* Node types: Kitchen, Living Room, Master Bedroom, Kids Room
+* Edge logic: Status updates, safety alerts, motion detection
+* Goal: Evaluate room-to-room communication and environmental sensing
 
-Configure Simulation:
+---
 
-The main.py script reads JSON config and builds the simulation graph.
+## ✨ Features
 
-Provision VMs:
+| Feature                        | Description                                                          |
+| ------------------------------ | -------------------------------------------------------------------- |
+| Schema-Driven Automation       | JSON Schemas define each node’s behavior and structure               |
+| Distributed Node Simulation    | Each node runs as a microservice inside its own VM                   |
+| Directed Graph-Based Messaging | Communication paths are generated from a graph topology              |
+| Query-Based Verification       | SQL queries can be issued to nodes for runtime evaluation            |
+| Modular and Extensible         | Add new schemas or modify configurations without changing core logic |
+| Monitoring Support (Basic)     | CPU/RAM usage tracking and log output via `psutil` and `nohup`       |
 
-Each node is cloned into its own VirtualBox VM.
+---
 
-Flask and MariaDB are launched on each VM via SSH using Paramiko.
+## 🔧 Requirements
 
-Simulate Behavior:
+### Host System
 
-Sensor and edge data is generated based on schema definitions.
+* **OS:** Windows 10/11
+* **RAM:** Minimum 8 GB (16 GB recommended)
+* **Software:**
 
-Nodes send/receive data through HTTP and store it in their local database.
+  * Oracle VirtualBox
+  * Python 3.8+
 
-Query Behavior:
+### Python Dependencies
 
-Arbitrary SQL queries can be executed across nodes via /query endpoint for evaluation and verification.
+```bash
+pip install paramiko networkx matplotlib requests psutil
+```
 
-📊 Use Cases Demonstrated
-Two scenarios were used to test and evaluate the system:
+### VM Requirements
 
-1. 🛣️ Urban Traffic Management
-Simulates train alerts, emergency routing, and CO2 broadcasting between city nodes.
+* Debian-based image with:
 
-2. 🏠 Smart Home Environment
-Models inter-room communication based on sensor data such as motion, gas leak, humidity, and brightness.
+  * Python 3 + Flask
+  * MariaDB
+  * SSH access
+  * `flask.py` (Flask microservice script)
 
-✅ Features
-Schema-driven automation
+---
 
-Modular and extensible architecture
+## 📉 Performance & Evaluation
 
-Node-level query execution
+* **Latency:** ∼2.7s–3.3s for SQL queries across nodes
+* **Scalability:** Verified up to 6 VMs (urban traffic scenario)
+* **Correctness:** 100% functional node deployment in case studies
+* **Monitoring:** Resource usage stats logged at each simulation phase
 
-Dynamic schema evolution
+---
 
-Visualization of network topology
+## 🤜 Future Enhancements
 
-Real-time monitoring and logging
+* Docker-based deployment instead of full VMs
+* MQTT or WebSocket-based asynchronous messaging
+* Live dashboards using Prometheus + Grafana
+* Dynamic behavior scripting with DSLs
+* Integration with physical IoT devices (Digital Twin)
 
-🧪 Requirements
-Host OS: Windows 10/11 (for VirtualBox and SSH scripts)
+---
 
-Python: 3.8+
+## 📖 Full Thesis
 
-Libraries: paramiko, networkx, matplotlib, psutil, requests
+The complete thesis, including implementation details, case studies, and references is available here:
 
-VirtualBox: with a base Debian VM (pre-configured)
+[**📄 Masterarbeit\_Amin\_Maneshi.pdf**](./Masterarbeit_Amin_Maneshi.pdf)
 
-MariaDB and Flask installed in the base VM
+---
 
-🔧 Setup Instructions
-Clone the repository:
+## 📞 Contact
 
-bash
-Copy
-Edit
-git clone https://github.com/AMIN-MAN13/Graph-Based-Simulation-Pipeline-for-Smart-Environments-.git
-cd Graph-Based-Simulation-Pipeline-for-Smart-Environments-
-Install dependencies:
+**Amin Maneshi**
+Email: [a.maneshi@uni-rostock.de](mailto:a.maneshi@uni-rostock.de)
+Faculty of Computer Science and Electrical Engineering
+University of Rostock
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Ensure you have:
+---
 
-VirtualBox with a base VM configured
-
-JSON schemas and config files adjusted for your test
-
-SSH keys or password set for VM access (e.g., user rp)
-
-Run the simulation:
-
-bash
-Copy
-Edit
-python main.py
-📘 Thesis Reference
-The full methodology, design decisions, evaluations, and results are explained in the thesis document:
-
-📄 Masterarbeit_Amin_Maneshi.pdf
-
-🧠 Future Work
-Replace VMs with Docker for scalability
-
-Integrate MQTT/WebSockets for real-time communication
-
-Add Prometheus + Grafana for live monitoring
-
-Enable dynamic behavior scripting using DSL
-
-Extend to support real sensor hardware (Digital Twins)
-
-📬 Contact
-Author: Amin Maneshi
-Email: a.maneshi@uni-rostock.de
-University: University of Rostock – Faculty of Computer Science and Electrical Engineering
-
+> This repository demonstrates a complete and reproducible architecture for modeling, deploying, and validating smart environments using structured configuration, VM-based orchestration, and schema-driven simulation.
